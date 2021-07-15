@@ -4,6 +4,7 @@ import CardMemo from "./CardMemo";
 import { cards } from "../api/memorama";
 
 function Cards(props) {
+
   const [loadCards, setLoadCards] = useState([])
 
   useEffect(() => {
@@ -19,17 +20,17 @@ function Cards(props) {
     <>
       <Grid
         templateColumns="repeat(4, 1fr)"
-        gap="4"
-        marginTop="2em"
+        gap="3"
+        marginTop='3'
         justifyItems="center"
       >
         {loadCards.map((card) => (
           <CardMemo card={card} key={card.id} />
         ))}
       </Grid>
-      <Stack marginTop='10px' direction='row' justifyContent='space-between'>
-        <Heading as='h2' color='white'>Errores:</Heading>
-        <Heading as='h2' color='white'>Nivel:</Heading>
+      <Stack marginTop='1' direction='row' justifyContent='space-between'>
+        <Heading as='h2' margin='0' color='white'>Errores:</Heading>
+        <Heading as='h2' margin='0' color='white'>Nivel:</Heading>
       </Stack>
     </>
   );
