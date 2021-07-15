@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import "@fontsource/open-sans"
+
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import Index from './pages/Index';
+
+const theme = extendTheme({
+  fonts:{
+    body:'Open Sans',
+  },
+  
+  styles:{
+    global:{
+      'body':{
+        background: 'linear-gradient(0deg, rgba(29,46,108,1) 0%, rgba(90,45,168,1) 39%, rgba(147,81,208,1) 100%)',
+        height:'100vh',
+
+        //Deja fijo el color gradiente
+        backgroundAttachment:'fixed',
+      },
+      'h1':{fontSize:'4rem',}
+    }
+  }
+});
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider theme={theme}>
+      <Router>
+        <Switch>
+          <Route exact path='/' component={Index} />
+        </Switch>
+      </Router>
+    </ChakraProvider>
   );
 }
 
